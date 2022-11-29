@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import AddTodo from "../AddTodo/AddTodo";
 import Todo from "../Todo/Todo";
+import styles from "./TodoList.module.css";
 
 export default function TodoList({ filter }) {
   const [todos, setTodos] = useState([
@@ -37,8 +38,8 @@ export default function TodoList({ filter }) {
   const filtered = getFilteredItems(todos, filter);
   console.log(filtered);
   return (
-    <div>
-      <ul>
+    <section className={styles.container}>
+      <ul className={styles.list}>
         {filtered.map((item) => (
           <Todo
             key={item.id}
@@ -49,7 +50,7 @@ export default function TodoList({ filter }) {
         ))}
       </ul>
       <AddTodo onAdd={handleAdd} />
-    </div>
+    </section>
   );
 }
 

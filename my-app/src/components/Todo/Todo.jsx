@@ -1,5 +1,6 @@
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import styles from "./Todo.module.css";
 
 export default function Todo({ key, todo, onUpdate, onDelete }) {
   const { id, text, status } = todo;
@@ -14,17 +15,22 @@ export default function Todo({ key, todo, onUpdate, onDelete }) {
     onDelete(todo);
   };
   return (
-    <li key={key}>
+    <li className={styles.todo} key={key}>
       <input
+        className={styles.checkbox}
         id="checkbox"
         onChange={handelChange} //
         checked={status === "complete"} //
         type="checkbox"
       />
-      <label htmlFor="checkbox"> {text}</label>
-      <button onClick={handleClick}>
-        <RiDeleteBin6Line />
-      </button>
+      <label className={styles.text} htmlFor="checkbox">
+        {text}
+      </label>
+      <span className={styles.icon}>
+        <button className={styles.button} onClick={handleClick}>
+          <RiDeleteBin6Line />
+        </button>
+      </span>
     </li>
   );
 }
