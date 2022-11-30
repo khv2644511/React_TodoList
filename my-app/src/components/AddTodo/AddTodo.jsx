@@ -5,6 +5,7 @@ import styles from "./AddTodo.module.css";
 
 export default function AddTodo({ onAdd }) {
   const [text, setText] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd({ id: uuid(), text: text, status: "active" });

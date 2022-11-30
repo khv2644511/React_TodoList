@@ -5,13 +5,10 @@ import Todo from "../Todo/Todo";
 import styles from "./TodoList.module.css";
 
 export default function TodoList({ filter }) {
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("todos")) ?? []
-  );
-
-  // const [todoData, setTodoData] = useState(
-  //   JSON.parse(localStorage.getItem("todo")) ?? []
-  // );
+  // 초깃값을 설정할 때 콜백함수를 사용해서 state가 변할 때마다 실행되지 않게 해야함
+  // readTodoFromLocalStorage() => X
+  // () =>readTodoFromLocalStorage() => O
+  const [todos, setTodos] = useState(() => readTodoFromLocalStorage());
 
   useEffect(() => {
     console.log(todos);
@@ -48,6 +45,11 @@ export default function TodoList({ filter }) {
       <AddTodo onAdd={handleAdd} />
     </section>
   );
+}
+
+function readTodoFromLocalStorage() {
+  const todos = localStorage.getItem("todos");
+  return todos ? JSON.parse(todos) : [];
 }
 
 function getFilteredItems(todos, filter) {
