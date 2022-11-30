@@ -1,31 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import AddTodo from "../AddTodo/AddTodo";
 import Todo from "../Todo/Todo";
 import styles from "./TodoList.module.css";
 
 export default function TodoList({ filter }) {
-  const [todos, setTodos] = useState([
-    {
-      id: "1",
-      text: "고구마캐기",
-      status: "active",
-    },
-    {
-      id: "2",
-      text: "깜자캐기",
-      status: "active",
-    },
-    {
-      id: "3",
-      text: "응가",
-      status: "active",
-    },
-  ]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) ?? []
+  );
 
-  localStorage.setItem("todos", todos);
+  // const [todoData, setTodoData] = useState(
+  //   JSON.parse(localStorage.getItem("todo")) ?? []
+  // );
+
+  useEffect(() => {
+    console.log(todos);
+    //   todos가 바뀌었을 때 로컬 스토리지에 저장하기
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const handleAdd = (todo) => {
-    localStorage.todos.push(JSON.stringify(todo));
     setTodos([...todos, todo]);
   };
 
