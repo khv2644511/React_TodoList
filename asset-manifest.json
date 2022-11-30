@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/khv2644511/React_TodoList/deployments/activity_log/static/css/main.dec3496a.css",
+    "main.js": "/khv2644511/React_TodoList/deployments/activity_log/static/js/main.ce09ef52.js",
+    "index.html": "/khv2644511/React_TodoList/deployments/activity_log/index.html",
+    "main.dec3496a.css.map": "/khv2644511/React_TodoList/deployments/activity_log/static/css/main.dec3496a.css.map",
+    "main.ce09ef52.js.map": "/khv2644511/React_TodoList/deployments/activity_log/static/js/main.ce09ef52.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dec3496a.css",
+    "static/js/main.ce09ef52.js"
+  ]
+}
