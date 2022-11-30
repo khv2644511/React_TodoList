@@ -1,20 +1,20 @@
 import React from "react";
-import { useDarkMode } from "../../context/DarkModeContext";
-import DarkMode from "../DarkMode/DarkMode";
+import { DarkModeContext, useDarkMode } from "../../context/DarkModeContext";
 import styles from "./Header.module.css";
 import { BsMoon } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
+import { useContext } from "react";
 
 export default function Header({ filter, filters, onFilterChange }) {
   const { darkMode, toggleDarkMode } = useDarkMode();
+  // const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   return (
     <header className={styles.header}>
-      <button onClick={() => toggleDarkMode()}>
+      <button onClick={() => toggleDarkMode()} className={styles.toggle}>
         {!darkMode && <BsMoon />}
         {darkMode && <ImSun />}
       </button>
-      <DarkMode />
       <ul className={styles.filters}>
         {filters.map((value, i) => (
           <li key={i}>

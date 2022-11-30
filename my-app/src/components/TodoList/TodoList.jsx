@@ -23,7 +23,9 @@ export default function TodoList({ filter }) {
     },
   ]);
 
+  localStorage.setItem("todos", todos);
   const handleAdd = (todo) => {
+    localStorage.todos.push(JSON.stringify(todo));
     setTodos([...todos, todo]);
   };
 
@@ -36,7 +38,7 @@ export default function TodoList({ filter }) {
   };
 
   const filtered = getFilteredItems(todos, filter);
-  console.log(filtered);
+  // console.log(filtered);
   return (
     <section className={styles.container}>
       <ul className={styles.list}>
